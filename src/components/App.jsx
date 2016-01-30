@@ -8,6 +8,7 @@ const containerStyle = {
 
 /* This is the dummy data that will be added to the store when the 'add' button is clicked */
 const dummyAction = {type: "RECEIVE_DATA", content: [{name: "Robin", age: 4}, {name: "Jack", age:6}]};
+const clearAction = {type: "CLEAR_DATA"};
 
 /* This is the main application component */
 class App extends React.Component {
@@ -18,6 +19,14 @@ class App extends React.Component {
 
   componentWillMount() {
 
+  }
+
+  renderClearButton(){
+    return <div>
+      <button onClick={() => this.props.dispatch(clearAction)}>
+        Clear store data
+      </button>
+    </div>
   }
 
   renderDummyButton(){
@@ -46,6 +55,7 @@ class App extends React.Component {
           <div> Store content: </div>
           {this.props.data ? this.renderCurrentStoreData() :  <span> Store is empty </span>}
           {this.renderDummyButton()}
+          {this.renderClearButton()}
         </div>
       </div>
     );
