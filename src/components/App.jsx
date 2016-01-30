@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+
+var _ = require("underscore");
 
 /* All styles are inlined and described as POJOs - taking advantage of object extends is recommended */
 const containerStyle = {
@@ -17,15 +20,32 @@ class App extends React.Component {
 
   }
 
+  renderCurrentStoreData(){
+    return _.map(this.props.data, function(datum){
+        return <div key={datum.name}> {datum.name} </div>
+      })
+  }
+
   render() {
     return (
       <div>
         <div style={containerStyle}>
           <span> Hello World! </span>
         </div>
+        <br/>
+        <div>
+          <div> Store content: </div>
+          {this.props.data ? this.renderCurrentStoreData() :  <span> Store is empty </span>}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+function select(state) {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(select)(App)
