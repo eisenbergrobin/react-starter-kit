@@ -6,6 +6,9 @@ const containerStyle = {
   height: "100%",
 }
 
+/* This is the dummy data that will be added to the store when the 'add' button is clicked */
+const dummyAction = {type: "RECEIVE_DATA", content: [{name: "Robin", age: 4}, {name: "Jack", age:6}]};
+
 /* This is the main application component */
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +18,15 @@ class App extends React.Component {
 
   componentWillMount() {
 
+  }
+
+  renderDummyButton(){
+    return <div> 
+      <br/> 
+      <button onClick={() => this.props.dispatch(dummyAction)}>
+        Add dummy data to store
+      </button>
+    </div>
   }
 
   renderCurrentStoreData(){
@@ -33,6 +45,7 @@ class App extends React.Component {
         <div>
           <div> Store content: </div>
           {this.props.data ? this.renderCurrentStoreData() :  <span> Store is empty </span>}
+          {this.renderDummyButton()}
         </div>
       </div>
     );
