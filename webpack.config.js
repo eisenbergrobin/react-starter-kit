@@ -16,7 +16,19 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel',
                 exclude: [path.resolve(__dirname, 'node_modules')],
-            }
+            },
+            {
+                test: require.resolve("underscore"),
+                loader: 'expose?_'
+            },
+            {
+                test: require.resolve("react"),
+                loader: 'expose?React'
+            },
+            {
+                test: require.resolve("react-dom"),
+                loader: 'expose?ReactDOM'
+            },
         ]
     },
     devServer: {

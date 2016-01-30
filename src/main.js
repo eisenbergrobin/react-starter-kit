@@ -1,5 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+/* These map global variables to the following CommonJS modules.
+    requiring these modules is no longer necessary
+ */
+require("underscore"); //binds to '_'
+require('react'); //binds to 'React'
+require('react-dom'); //binds to 'ReactDOM'
 
 import {Provider} from 'react-redux'
 

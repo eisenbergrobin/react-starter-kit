@@ -1,7 +1,4 @@
-import React from 'react';
 import { connect } from 'react-redux'
-
-var _ = require("underscore");
 
 /* All styles are inlined and described as POJOs - taking advantage of object extends is recommended */
 const containerStyle = {
